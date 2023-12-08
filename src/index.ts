@@ -25,13 +25,9 @@ const app = express()
 app.get('/api-call', (req, res) => {
     let { name } = req.query;
     fetch(url + '?name=' + name, options)
-        .then((response) => response.json())
-        .then((response) => {
-            console.log(response)
-            res.send(response)
-        })
+        .then(async (response) => res.send(await response.json()))
         .catch((err: any) => {
-            console.log(err);
+            console.error(err);
             res.sendStatus(500);
             res.send(err);
         });
@@ -45,6 +41,6 @@ app.use((req, res) => {
     res.status(404)
 })
 // Init server
-app.listen(PORT, () => {
+export default app.listen(PORT, () => {
     console.log(`Server is running on ${HOSTNAME}:${PORT}`)
 })

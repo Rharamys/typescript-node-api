@@ -4,11 +4,13 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "outDir": "./dist",
+    "types": ["node", "jest"],
   },
+  "compileOnSave": true,
   "include": [
       "src/index.ts",
       "./src/**/*",
-      "./test/**/*"
+      "tests/**/*"
   ],
   "exclude": [
     "node_modules"
